@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //59question
+        //extract the first half of a even string.
+        function half(str){
+            if (str.length%2==0){
+                return (str.slice(0,str.length/2));
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(half("javascript"));
+        console.log(half("python"));
+        console.log(half("hello"));
+
+        //60. create a new string without the first and last character of a given string
+        function first_last(str){
+            var new_str= str.substring(1,str.length-1);
+            return new_str;
+        }
+        console.log(first_last("hello"));
+
+        //61. remove first element in string and concate
+        function concate(str1,str2){
+            str1= str1.substring(1,str1.length);
+            str2= str2.substring(1,str2.length);
+            var new_str= str1+str2;
+            return new_str;
+        }
+        console.log(concate("hello","world"));
+//62
+        function last(str){
+            if(str.length>3){
+            let str1= str.substring(str.length-3) +str.substring(0,str.length-3);
+            return str1;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(last("hello"));
+        console.log(last("string"));
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

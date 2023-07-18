@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html>
+    <head> 
+<title>
+    Assignment 5
+</title> 
+</head>
+<script>
+    function insert()
+{
+let x=document.getElementById('sampleTable').insertRow(0);
+let y = x.insertCell(0);
+let z = x.insertCell(1);
+y.innerHTML="New Cell1";
+z.innerHTML="New Cell2";
+}
+</script>
+<body> 
+<table id="sampleTable" border="1"> 
+<tr><td>Row1 cell1</td> 
+<td>Row1 cell2</td></tr> 
+<tr><td>Row2 cell1</td> 
+<td>Row2 cell2</td></tr> 
+</table><br> 
+<input type="button" onclick="insert()" value="Insert row">  
+</body>
+</html>

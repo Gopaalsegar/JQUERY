@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+<script>
+    function myfun(){
+        let code= document.getElementById("de").innerHTML;
+        document.getElementById("de").innerHTML = code.replace("gopaal","nandha"); 
+        let text=document.getElementById("con").innerHTML;
+    let text2="gopaal";
+    document.getElementById("con").innerHTML= text.concat(" ",text2);
+    let new1 = "Hi how are you";
+    document.getElementById("new1").innerHTML= new1.includes("are");
+
+    let text1 = "The plain in stays  in the ";
+if(text1.match("ain")){
+ 
+document.getElementById("demo").innerHTML = "available";
+}
+else{
+document.getElementById("demo").innerHTML = "not available";
+}
+    }
+    
+    
+
+    
+
+
+</script>
+
+    </head>
+<body>
+<p id="new1"></p>   
+<button onclick="myfun()"> Click me</button>
+<p id="de">Hi i am gopaal</p>
+<p id="con">Hi</p>
+<p id="demo"></p>
+
+
+</body>
+</html>

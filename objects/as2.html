@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let name={
+            firstName: "gopaal",
+            lastName: "segar"
+
+        }
+        let printName = function(city,state){
+            return this.firstName+ " "+ this.lastName+" is "+"from "+ city+","+state;
+        }
+        console.log(printName.call(name,"maduai","tamilnadu"));
+        console.log(printName.apply(name,["chennai","tamilnadu"]));
+        let name2= printName.bind(name,"svg","tamilnadu");
+        console.log(name2());
+
+        // function pattern(num){
+        //     for(i=1;i<=num;i++){
+        //         for(j=0;j<i;j++){
+                   
+        //         }
+                
+        //     }
+
+        // }
+        // pattern(4);
+
+        let name3={
+          firstName: "Nandha",
+          lastName: "segar"
+        }
+        let Print= function(city,state){
+          return this.firstName+" "+this.lastName+" is from "+city+" "+state;
+        }
+        console.log(Print.call(name3,"madurai","Tamil"));
+
+        function getCurrentTime() {
+          const now = new Date();
+             const hours = now.getHours().toString().padStart(2, '0');
+              const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+                  return `${hours}:${minutes}:${seconds}`;
+            }
+
+function displayCurrentTime() {
+  const currentTime = getCurrentTime();
+  console.log(currentTime);
+}
+
+setInterval(displayCurrentTime, 100000);
+
+var library = [ 
+   {
+       title:  'The Road Ahead',
+       author: 'Bill Gates',
+       libraryID: 1254
+   },
+   {
+       title: 'Walter Isaacson',
+       author: 'Steve Jobs',
+       libraryID: 4264
+   },
+   {
+       title: 'Mockingjay: The Final Book of The Hunger Games',
+       author: 'Suzanne Collins',
+       libraryID: 3245
+   }];
+
+library.sort(function(a, b) {
+  return a.libraryID - b.libraryID;
+});
+
+console.log(library);
+//all properties
+
+function FindAllMethods(obj) {
+    return Object.getOwnPropertyNames(obj).filter(function(property) {
+        return typeof obj[property] == "function";
+    });
+}
+
+console.log(FindAllMethods(Math));
+console.log(FindAllMethods(Array));
+function all_properties(obj) 
+{
+ return Object.getOwnPropertyNames(obj);
+}
+
+console.log(all_properties(Math));
+
+console.log(all_properties(Array));
+
+function retrieve(obj){
+    new_arr=[];
+    for([key,values] of Object.entries(obj)){
+        new_arr.push(values);
+    }
+    return new_arr;
+}
+console.log(retrieve({red: "#FF0000", green: "#00FF00", white: "#FFFFFF"}));
+//copy obj into arr
+
+function convertObjectToList(obj) {
+  return Object.entries(obj);
+}
+
+
+
+console.log(convertObjectToList({red: "#FF0000", green: "#00FF00", white: "#FFFFFF"}));
+
+function swapKeysAndValues(obj) {
+  var swappedObj = {};
+
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      swappedObj[obj[key]] = key;
+    }
+  }
+
+  return swappedObj;
+}
+console.log(swapKeysAndValues({red: "#FF0000", green: "#00FF00", white: "#FFFFFF"}));
+
+//has own property
+function check(obj, key) {
+    return obj != null && hasOwnProperty.call(obj, key);
+  }
+console.log(check({red: "#FF0000", green: "#00FF00", white: "#FFFFFF"}, "green"));
+function bubbleSort(arr) {
+  var len = arr.length;
+  
+  for (var i = 0; i < len - 1; i++) {
+    for (var j = 0; j < len - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        var temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  
+  return arr;
+}
+
+var data = [6, 4, 0, 3, -2, 1];
+var sortedData = bubbleSort(data);
+
+console.log(sortedData);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //36checks whether the last digit of three positive integers is the same.
+
+        function last(x,y,z){
+            if(x>0 && y>0 && z>0){
+                return(x%10==y%10 && y%10==z%10 && x%10 == z%10);
+            }
+            else{
+                return false;
+            }
+         }
+         console.log(last(10,30,99));
+         console.log(last(77,87,97));
+         console.log(last(10,22,31));
+         // the first 3 characters in lower case from a given string. If the string length is less than 3 convert all the characters to upper case
+        function uplow(str){
+            if(str.length<3){
+                return str.toUpperCase();
+            }
+            f=str.substring(0,3).toLowerCase();
+            l=str.substring(3,str.length);
+            return f+l;
+        }
+        console.log(uplow("Computer"));
+        console.log(uplow("hi"));
+        //a+ grade
+        function grade(mark,str){
+            if(str){
+                return mark>90;
+            }
+            return mark >89 && mark<100;
+        }
+        console.log(grade(91,"true "));
+        console.log(grade(95," "));
+        console.log(grade(70,"true "));
+        console.log(grade(93,"false "));
+        //check sum between 50 and 80 return 65 otherwise 80
+        function sum3(x,y){
+            z=x+y;
+            if(z>50 && z<80){
+                return 65;
+            }
+            else{
+                return 80;
+            }
+        }
+        console.log(sum3(30,40));
+        console.log(sum3(80,30));
+        //one integer is 8 or sum or differencee is 8
+        function eight(x,y){
+            z=x+y;
+            a=x-y;
+            if(x==8 || y==8 || z==8 || a==8){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(eight(7,3));
+        console.log(eight(8,1));
+        console.log(eight(4,4));
+        console.log(eight(10,2));
+        //if 3 integer are same 30, 2 are same return 20, other wise 40
+        function same(x,y,z){
+            if (x == y || y == z || z == x) {
+            return 20;
+            }
+            if(x==y && y==z){
+                return 30;
+                }
+            else{
+                return 40;
+            }
+        }
+        console.log(same(7,3,7));
+        console.log(same(7,3,2));
+        console.log(same(7,7,7));
+        // whether three given numbers are increasing in strict or in soft mode.
+        function check6(x,y,z){
+            if(x<y && z>y){
+                return "strict mode";
+            }
+            else if (y<z){
+                return "soft mode";
+            }
+            else{
+                return "undefined"
+            }
+        }
+        console.log(check6(10,15,31));
+        console.log(check6(24,22,31));
+        console.log(check6(50,21,15));
+        //
+        function check7(x,y,z){
+            
+            return (x >= 20 && (x < y || x < z)) ||
+            (y >= 20 && (y < x || y < z)) ||
+            (z >= 20 && (z < y || z < x));
+
+        }
+        console.log(check7(10,15,31));
+        console.log(check7(24,22,31));
+        console.log(check7(50,21,15));
+        //check either sum or diff is 15
+        function check8(x,y){
+            z=x+y;
+            a=x-y;
+            if(x==15 || y==15 || z==15 || a==15){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(check8(7,3));
+        console.log(check8(16,1));
+        console.log(check8(4,15));
+        console.log(check8(10,5));
+        //46 multiple of 7 or 11
+        function check9(x,y){
+            if(!((x%7==0 || x%11==0) && (y%7==0 || y%11==0))){
+                return((x % 7 == 0 || x % 11 == 0) || (y % 7 == 0 || y % 11 == 0))
+            }
+            else{
+            return false;
+            }
+        }
+        console.log(check9(14, 21));
+        console.log(check9(14, 20));
+        console.log(check9(16, 20));
+        //to find wherthe num is within the range
+        function check10(x, y, n) 
+        {    
+            if (n < 40 || n > 10000)
+            return false;
+            else
+            if (n >= x && n <= y)
+                return true;
+            else
+                return false;
+        }
+        console.log(check10(40, 4000, 45));  
+        console.log(check10(80, 320, 79));  
+        console.log(check10(89, 4000, 30));
+        //string reverse
+        function str_rev(str) 
+        {
+            return str.split("").reverse().join("");
+        }
+        console.log(str_rev("Computer"))
+        //next alphabet
+      
+        function change(text) {
+        
+        var s = text.split('');
+        for (var i = 0; i < s.length; i++) {
+        
+        switch(s[i]) {
+        case ' ':
+        break;
+        case 'z':
+        s[i] = 'a';
+        break;
+        case 'Z': 
+        s[i] = 'A';
+        break;
+        default:
+        s[i] = String.fromCharCode(1 + s[i].charCodeAt(0));
+        }
+
+        
+        switch(s[i]) {
+        case 'a': case 'e': case 'i': case 'o': case 'u':
+        s[i] = s[i].toUpperCase();
+        }
+        }
+        return s.join('');
+        }
+        console.log(change("COMPUTER"));
+        console.log(change("python"));
+        // capitalize every first letter
+        function cap(str){
+            str= str.split(" ");
+            for( i=0;i<str.length;i++){
+                str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+            }
+            return str.join(" ");
+        }
+        console.log(cap("hi i am gopaal"));
+        // time hours and minutes
+        function time(x){
+            let hour= Math.floor(x/60);
+            let min=x%60;
+            return hour+ ":" +min;
+        }
+        console.log(time(450));
+        console.log(time(125));
+        //sort alphabets
+        function sort_alpha(str){
+            return str.split("").sort().join("");
+        }
+        console.log(sort_alpha("computer"))
+        //test 3 spaces between a and b
+        function spaces(str){
+            return (/a...b/).test(str) || (/b...a/).test(str);
+        }
+        console.log(spaces("chainsbreak"));
+        console.log(spaces("computer"));
+        function vowel(str)
+        { 
+
+        return str.replace(/[^aeiou]/g, "").length; 
+        }
+
+        console.log(vowel("Python"));
+        console.log(vowel("computer"));
+        // return p and t
+        function equal_pt(str)
+        { 
+        var str_p = str.replace(/[^p]/g, "");
+
+        var str_t = str.replace(/[^t]/g, "");
+
+        var p_num = str_p.length;
+        var s_num = str_t.length;
+
+        return p_num === s_num;
+                
+        }
+        console.log(equal_pt("paattpss"));
+        console.log(equal_pt("paatps"));
+        // string copies
+        function str_cop (str, n) 
+        {
+        if (n < 0)
+            return false;
+        else
+        return str.repeat(n);
+        }
+        console.log(str_cop("abc", 5));
+        console.log(str_cop("abc", 1));
+        console.log(str_cop("abc", -2));
+
+        //next alphabet
+        function next(str){
+            var text=  str.split('');
+            for(var i=0;i< text.length;i++){
+                switch(text[i]){
+                    case ' ':
+                        break;
+                    case 'z': text[i]='a';break;
+                    case 'Z': text[i]='A';break;
+                    default :
+                    text[i]= String.fromCharCode(1 + text[i].charCodeAt(0));
+                }
+                
+
+            }
+            return text.join('');
+        }
+        console.log(next("abcdz"))
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

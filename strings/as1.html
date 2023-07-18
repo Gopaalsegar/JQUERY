@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function sep(str,count){
+           
+            str1=''
+            
+                for(i=0;i<count;i++){
+                    str1+=str;
+                }
+                
+            
+            return str1;
+        }
+        console.log(sep("hi",3));
+
+        function ins(main_str,in_str,pos){
+            if(typeof(in_str)=="undefined"){
+                pos = 0;
+            }
+            if(typeof(pos)=="undefined"){
+                ins_string = '';
+
+            }
+            return main_str.slice(0,pos)+ in_str + main_str.slice(pos);
+
+            
+        }
+        console.log(ins('We are doing some exercises.'));
+        console.log(ins('We are doing some exercises.','JavaScript '));
+        console.log(ins('We are doing some exercises.','JavaScript ',18));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

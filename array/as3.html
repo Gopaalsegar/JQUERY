@@ -1,0 +1,50 @@
+//print subset of arr
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function subset(str){
+            subs=[];
+            for(i=0;i<str.length;i++){
+                for(j=i+1;j<=str.length;j++){
+                     subs.push(str.substring(i,j));
+                }
+            }
+            return subs;
+        }
+        console.log(subset("dog"));
+
+        //area and perimeter
+        function circle(radius){
+            this.radius=radius;
+            this.area= function(){
+                return Math.PI*this.radius*this.radius;
+            }
+            this.perimeter= function(){
+                return 2*Math.PI*this.radius;
+            }
+        }
+        let c= new circle(3);
+        console.log(c.area().toFixed(2));
+//random shuffleArray
+        function shuffleArray(array) {
+         for (let i = array.length - 1; i > 0; i--) {
+         const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+         }
+        return array;
+            }
+
+// Example usage:
+const myArray = [1, 2, 3, 4, 5];
+const shuffledArray = shuffleArray(myArray);
+console.log(shuffledArray);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //getting url of the document
+        console.log(document.URL);
+        //user defined variable
+        let varname='hi';
+        let num=500;
+        this[varname]=num;
+        console.log(this[varname]);
+        //split the string
+        let filename='index.html';
+        console.log(filename.split('.').pop())
+        //difference
+        function diff(n){
+            if(n<13)
+                return 13- n;
+           
+            else
+                return (n-13)*2;
+            
+        }
+        console.log(diff(50));
+        console.log(diff(10));
+        //sum of integer
+        function sum(x,y){
+            if(x==y){
+                return 3* (x+y);
+
+            }
+            
+            else{
+                return x+y;
+            }
+        }
+        console.log(sum(5,6));
+        console.log(sum(2,2));
+        //difference2
+        function diff2(n){
+            
+            if(n>19){
+                return 3*(n-19);
+            }
+            else{
+                return 19-n;
+            }
+        }
+        console.log("difference "+diff2(30));
+        console.log("difference" +diff2(10));
+        //check the sum is 50
+        function sum2(x,y){
+            if(x==50 || y==50 || (x+y==50)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(sum2(50,70));
+        console.log(sum2(40,10));
+        console.log(sum2(10,50));
+        console.log(sum2(10,20));
+        //check a given integer is within 20 of 100 or 400 
+        function check(num){
+            if((num>20 && num<100) || num==400)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(check(400));
+        console.log(check(50));
+        console.log(check(10));
+        //check on is pos and one is neg
+        function posneg(x,y){
+            if((x>0 && y<0)|| (x<0 && y>0)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(posneg(-20,30));
+        console.log(posneg(40,-20));
+        console.log(posneg(20,20));
+        console.log(posneg(-20,-10));
+        //add py if it is not available
+        function str(str1){
+            if((str1=== null || str1 === undefined) || str1.substring(0,2)==='py'){
+                return str1;
+            }
+            else{
+                return 'py' + str1;
+            }
+
+        }
+        console.log(str('python'));
+        console.log(str('thon'));
+        //remove the position 
+        function rem(str,pos){
+            let part1=str.substring(0,pos);
+            let part2=str.substring(pos+1,str.length);
+            return part1+part2;
+        }
+        console.log(rem("python",3));
+
+        //change position
+        function str_change(str){
+            
+            if(str.length>1){
+                new1 =str.substring(1,str.length-1);
+            return (str.charAt(str.length-1))+new1+str.charAt(0);
+            }
+            
+        
+        }
+        console.log(str_change("computer"));
+        //adding front and back
+         function addfrontback(str){
+            a= str.charAt(0);
+            return a+str+a;
+         }
+         console.log(addfrontback("computer"));
+         //multiple of 3 or 7
+         function mul(num){
+            if(num%3==0 || num%7==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+         }
+         console.log(mul(7));
+         console.log(mul(9));
+         console.log(mul(52));
+         //last three numb
+         function addfrontback2(str){
+            if(str.length>3){
+            a= str.substring(str.length-3);
+            return a+str+a;
+            }
+         }
+         console.log(addfrontback2("computer"));
+         //check whether starts with java
+         function check2(str){
+            x=str.substring(0,4);
+            if(x=='java'){
+                return true;
+            }
+            else{
+                return false;
+            }
+         }
+         console.log(check2("javascript"))
+         console.log(check2("python"))
+
+         //between 50 and 99
+         function check3(x,y){
+            if((x>50 && x<99) && (y>50 && y<99)){
+                return true;
+            }
+            else{
+                return false;
+            }
+         }
+         console.log("check 50,99");
+         console.log(check3(4,90));
+         console.log(check3(53,73));
+         console.log(check3(120,56));
+         console.log(check3(56,9));
+
+         //checkwhether the last has script
+         function check4(str){
+            if(str.length>6){
+                new_str=str.substring(10,4);
+                if(new_str=='script'){
+                    return str.substring(0,4);
+                }
+                else{
+                    return str;
+                }
+            }
+            else{
+                return str;
+            }
+         }
+         console.log(check4("javascript"));
+         console.log(check4("gdjgfa"));
+
+         //largesst number
+
+         function largest(x,y,z){
+            if(x>y && x>z){
+                a= x;
+            }
+            
+            else{
+                a= y;
+            }
+            if(z>a){
+                a= z;
+            }
+            return a;
+         }
+         console.log(largest(55,9,8));
+         console.log(largest(3,89,8));
+         console.log(largest(3,3,1));
+
+         //nearest to 100
+         function nearest(x,y){
+            a=100-x;
+            b=100-y;
+            if(a>b){
+                return y;
+            }
+            else{
+                return x;
+            }
+
+         }
+         console.log(nearest(99,90));
+         console.log(nearest(80,97));
+         //two numbers are in range 40..60 or in the range 70..100 inclusive
+         function range(x,y){
+            if((x>40 && x<60 && y>40 && y<60) || ( x>70 && x<100 && y>70 && y<100)){
+                return true;
+            }
+            else{
+                return false;
+            }
+         }
+         console.log(range(44,56));
+         console.log(range(80,46));
+         console.log(range(71,87));
+         //the larger number from the two given positive integers, the two numbers are in the range 40..60 inclusive       
+         function range2(x,y){
+            if((x>=40 && x<=60)&& (y>=40 && y<=60)){
+                if(x>y){
+                    return x;
+                }
+                else{
+                    return y;
+                }
+            }
+            else {
+                return false;
+            }
+         }
+         console.log(range2(55,50));
+         console.log(range2(30,77));
+
+         //character exists between the 2nd and 4th positions in a given string
+         function check5(str,str1){
+            for(let i=0; i<=str.length;i++){
+                if ((str.charAt(i)==str1) && (i >= 1 && i <= 3)){
+                    return true;
+                }
+            }
+            return false;
+         }
+         console.log(check5("computer","m"));
+         console.log(check5("hello","o"));
+         console.log(check5("python","y"));
+         
+
+    </script>
+</head>
+<body>
+    
+   
+</body>
+</html>

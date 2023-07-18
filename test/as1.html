@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="element">a</button>
+    <button id="element2">b</button>
+    <script>
+        const add_arr=document.getElementById("element");
+        const disp_arr=document.getElementById("element2");
+
+        add_arr.addEventListener("click",add_new_arr);
+        disp_arr.addEventListener("click",disp_new_arr);
+let x=[];
+        function add_new_arr(){
+            a=prompt("Enter a value");
+            x.push(a);
+        }
+        function disp_new_arr(){
+            console.log(x);
+        }
+    </script>
+</body>
+</html>

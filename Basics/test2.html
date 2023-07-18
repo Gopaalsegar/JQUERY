@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function newfun(x,y,z){
+            if(x%10===y%10 && y%10===z%10 && x%10===z%10){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        console.log(newfun(34,9,344));
+        console.log(newfun(11,5631,21));
+        //pattern
+        var num = 5;
+var m, n;
+for (m = 1; m < num; m++) {
+for (n = 1; n <= m; n++)
+document.write(""+n+" ");
+document.write('<br/>');
+}
+for (m = num; m >= 0; m--) {
+for (n = 1; n <= m; n++)
+document.write(""+n+" ");
+document.write('<br/>');
+}
+document.write('<br/>');
+
+function pattern(num){
+    for(i=1;i<num;i++){
+        for(j=1;j<=i;j++){
+            console.log(""+j+"");
+        }
+        console.log('\n');
+    }
+    for(i=num;i>=0;i--){
+        for(j=1;j<=i;j++){
+            console.log(""+n+"");
+        }
+        console.log("\n");
+    }
+}
+pattern(5);
+function parseURL(url) {
+  const parsedURL = new URL(url);
+  
+  const parsedObject = {
+    protocol: parsedURL.protocol,
+    host: parsedURL.host,
+    hostname: parsedURL.hostname,
+    port: parsedURL.port,
+    path: parsedURL.pathname,
+    queryParams: {},
+  };
+
+  parsedURL.searchParams.forEach((value, key) => {
+    parsedObject.queryParams[key] = value;
+  });
+
+  return parsedObject;
+}
+
+// Example usage
+const url = "https://www.example.com/path?param1=value1&param2=value2";
+const parsedURL = parseURL(url);
+console.log(parsedURL);
+
+
+
+
+//url
+// function parsedURL(url){
+//     let parsedURL= new URL(url);
+//     let parsedObject={
+//         protocol: parsedURL.protocol,
+//         host:parsedURL.host,
+//         hostname: parsedURL.hostname,
+//         port: parsedURL.port,
+
+//     }
+// }
+
+//retrieve the object values
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

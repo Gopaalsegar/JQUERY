@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="aler">a</button>
+    <button id="add">b</button>
+    <button id="disp">c</button>
+    <script>
+        const alert_but=document.getElementById("aler");
+        const add_num=document.getElementById("add");
+        const disp_num=document.getElementById("disp");
+        alert_but.addEventListener("click",show_alert);
+        add_num.addEventListener("click",add_arr);
+        disp_num.addEventListener("click",disp_arr);
+
+        const new_arr=[];
+
+        function show_alert(){
+            alert("Hi how are yoou");
+        }
+        function add_arr(){
+            a=prompt("Enter the value");
+            new_arr.push(a);
+        }
+        function disp_arr(){
+            console.log(new_arr);
+        }
+    </script>
+</body>
+</html>

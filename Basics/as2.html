@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculate() {
+      
+      var num1 = parseFloat(document.getElementById("num1").value);
+      var num2 = parseFloat(document.getElementById("num2").value);
+
+      
+      var multiplicationResult = num1 * num2;
+      var divisionResult = num1 / num2;
+
+     
+      document.getElementById("multiplicationResult").innerHTML = "Multiplication: " + multiplicationResult;
+      document.getElementById("divisionResult").innerHTML = "Division: " + divisionResult;
+    }
+    function celsiusToFahrenheit(celsius) {
+  var fahrenheit = (celsius * 9) / 5 + 32;
+  return fahrenheit;
+}
+    </script>
+</head>
+<body>
+    <form>
+        <label for="num1">Number 1:</label>
+        <input type="number" id="num1"><br>
+    
+        <label for="num2">Number 2:</label>
+        <input type="number" id="num2"><br>
+    
+        <button type="button" onclick="calculate()">Calculate</button>
+      </form>
+    
+      <div id="result">
+        <p id="multiplicationResult"></p>
+        <p id="divisionResult"></p>
+      </div>
+    
+</body>
+</html>

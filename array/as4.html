@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //remove duplicate items from an array
+        function dup(num){
+            var new_arr=[];
+            for(i in num){
+                
+                    if (!(num[i] in new_arr)){
+                        new_arr.push(num[i]);
+                    }
+                
+                
+            }
+            return new_arr;
+        }
+        console.log(dup([1,2,1,3,4,2,1,5,6,7]));
+
+        //ordinal number
+        // function ord(color){
+            
+        //     for(i in color){
+        //     j=i%10;
+        //     k=i%100;
+        //     if(j==1 && k!=11){
+        //         console.log(i+" st"+" is"+color[i]) ;
+        //     }
+        //     if(j==2 && k!=12){
+        //         console.log(i+" nd"+" is"+color[i]) ;
+        //     }
+        //     if(j==3 && k!=13){
+        //         console.log(i+" rd"+" is"+color[i]) ;
+        //     }
+        //     else{
+        //         console.log(i+ " th"+" is"+color[i]) ;
+        //     }
+            
+        // }
+
+        // }
+        // ord(( ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "]));
+
+//         function Ordinal(n) {
+//          var s = ["th", "st", "nd", "rd"],
+//          v = n % 100;
+//         return n + (s[(v - 20) % 10] || s[v] || s[0]);
+//         for(i = 0; i < color.length; i++){
+//         var ordinal = i + 1;
+
+//         var output = (Ordinal(ordinal) + " choice is " + color[i] + ".");
+
+// console.log(output);
+//         }
+//     }
+//         var color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+var color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+
+function Ordinal(n)
+ {
+ var o = ["th","st","nd","rd"],
+ x = n%100;
+ return x+(o[(x-20)%10]||o[x]||o[0]);
+ }
+
+for(n = 0; n < color.length; n++){
+ var ordinal = n + 1;
+
+ var output = (Ordinal(ordinal) + " choice is " + color[n] + ".");
+
+console.log(output);
+}
+// the leap years in a given range of years.
+function leapyear(st_yr,ed_yr){
+    var new_arr=[];
+    for(i=st_yr;i<=ed_yr;i++){
+       new_arr.push(i);
+
+    }
+    // console.log(new_arr+"new array");
+    var leap=[];
+    for(j in new_arr){
+        if((new_arr[j]%4===0 && new_arr[j]%100!==0)||(new_arr[j]%100===0 && new_arr%400===0)){
+             leap.push(new_arr[j]);
+        }
+    }
+    console.log("leap years:"+leap);
+
+}
+leapyear(2000,2022);
+function union(array1, array2) {
+  
+  const combinedArray = array1.concat(array2);
+  const unionArray = Array.from(new Set(combinedArray));
+  
+  return unionArray;
+}
+
+// Example usage:
+console.log(union([1, 2, 3], [100, 2, 1, 10]));
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function printWindowContents() {
+        window.print();
+        }
+
+        function getCurrentDate() {
+        const currentDate = new Date();
+
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const year = String(currentDate.getFullYear());
+
+        const dateFormat1 = `${month}-${day}-${year}`;
+        const dateFormat2 = `${month}/${day}/${year}`;
+        const dateFormat3 = `${day}-${month}-${year}`;
+        const dateFormat4 = `${day}/${month}/${year}`;
+
+        console.log(`mm-dd-yyyy: ${dateFormat1}`);
+        console.log(`mm/dd/yyyy: ${dateFormat2}`);
+        console.log(`dd-mm-yyyy: ${dateFormat3}`);
+        console.log(`dd/mm/yyyy: ${dateFormat4}`);
+        }
+
+getCurrentDate();
+
+function TriangleArea(side1, side2, side3) {
+  
+  const semiPerimeter = (side1 + side2 + side3) / 2;
+
+  
+  const area = Math.sqrt(
+    semiPerimeter *(semiPerimeter - side1) *(semiPerimeter - side2) *(semiPerimeter - side3)
+  );
+
+  return area;
+}
+
+
+const side1 = 5;
+const side2 = 6;
+const side3 = 7;
+const triangle= TriangleArea(side1, side2, side3);
+
+console.log(`The area of the triangle is: ${triangle}`);
+
+function rotateStringRight(string) {
+  let rotatedString = string;
+
+  setInterval(() => {
+   
+    const lastChar = rotatedString.charAt(rotatedString.length - 1);
+    rotatedString = lastChar + rotatedString.slice(0, -1);
+
+    console.log(rotatedString);
+  }, 10000);
+}
+
+const originalString = 'w3resource';
+
+rotateStringRight(originalString);
+
+function isLeapYear(year) {
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+const year1 = 2020;  
+const year2 = 1900;  
+const year3 = 2000;  
+const year4 = 2023;  
+
+console.log(`${year1} is a leap year? ${isLeapYear(year1)}`);
+console.log(`${year2} is a leap year? ${isLeapYear(year2)}`);
+console.log(`${year3} is a leap year? ${isLeapYear(year3)}`);
+console.log(`${year4} is a leap year? ${isLeapYear(year4)}`);
+
+function guessNumber() {
+  
+  const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+ 
+  const userGuess = parseInt(prompt("Guess a number between 1 and 10:"));
+
+ 
+  if (userGuess === randomNumber) {
+    console.log("Good work");
+  } else {
+    console.log("Not a match" + randomNumber);
+  }
+}
+
+guessNumber();
+
+
+
+
+
+    </script>
+    
+</head>
+<body>
+    <button onclick="document.getElementById('dat').innerHTML = Date()">
+    date and time</button>
+    <p id="dat"></p>
+    <button onclick="printWindowContents();">print</button>
+</body>
+</html>

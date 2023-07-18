@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function array_Range(st,pos){
+            let arr=[];
+            if(st>0){
+            for(i=st;i<=pos;i++){
+                arr.push(i);
+            }
+            return arr;
+        }
+        else{
+            for(i=st;i<=pos+1;i++){
+                arr.push(i);
+
+            }
+            return arr.slice(0,pos);
+        }
+        }
+        console.log(array_Range(1,6));
+        console.log(array_Range(-6,10));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
