@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            $("button").click(function(){
+                var f_nam=$("#f_name").val();
+                var l_nam=$("#L_name").val();
+                    $("#tbody1").append("<tr><td>"+f_nam+"</td>"+"<td>"+l_nam+"</td></tr>");
+                    $('#f_name').val('');
+                    $('#L_name').val('');
+  
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="f_name" placeholder="First name">
+    <input type="text" id="L_name" placeholder="Last name">
+    <button id="add">Add</button>
+    <table>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <tbody id="tbody1">
+
+        </tbody>
+    </table>
+
+</body>
+</html>

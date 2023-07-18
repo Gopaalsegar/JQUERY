@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Transaction</title>
+    <style>
+        body {
+          background-image: url(bank.jpg);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background: linear-gradient(to bottom, #f2f2f2, #a4fda3); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #accountBalance {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        a {
+  display: block;
+  text-align: center;
+}
+ a {
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #40ff40;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="account">Account Balance:</label>
+        <span id="accountBalance">0</span><br><br>
+        
+        <label for="amount">Transaction Amount:</label>
+        <input type="number" id="amount"><br><br><br>
+        
+        <button id="creditBtn">Credit</button>   
+        <button id="debitBtn">Debit</button><br><br>
+
+        <table id="transactionTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Transaction Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <a href="home.html">home</a>
+
+    </div>
+
+    <script>
+       $(document).ready(function() {
+    var accNum = localStorage.getItem("accNum");
+    var accNum1 = JSON.parse(accNum);
+    var acctBalance = parseFloat(localStorage.getItem(accNum1));
+    var transactionTable = $('#transactionTable tbody');
+
+    $('#accountBalance').text(localStorage.getItem(accNum1));
+
+   
+    if (localStorage.getItem('transactions')) {
+        var transactions = JSON.parse(localStorage.getItem('transactions'));
+
+        
+        var accountTransactions = transactions.filter(function(transaction) {
+            return transaction.accountNumber === accNum1;
+        });
+
+        accountTransactions.forEach(function(transaction) {
+            appendtran(transaction.date, transaction.type, transaction.amount);
+        });
+    }
+
+    $('#creditBtn').on('click', function() {
+        var amount = parseFloat($('#amount').val());
+        var acctBalance = parseFloat(localStorage.getItem(accNum1));
+
+        if (acctBalance + amount < 0 && amount <= 0) {
+            alert('Not a valid transaction');
+        } else {
+            acctBalance += amount;
+            updateAccountBalance(acctBalance);
+            savetran('Credit', amount);
+        }
+    });
+
+    $('#debitBtn').on('click', function() {
+        var amount = parseFloat($('#amount').val());
+        var acctBalance = parseFloat(localStorage.getItem(accNum1));
+
+        if (acctBalance - amount < 0) {
+            if (amount < 0) {
+                alert('Negative number not allowed');
+            }
+            alert('Not enough money in your account');
+        } else {
+            acctBalance -= amount;
+            updateAccountBalance(acctBalance);
+            savetran('Debit', amount);
+        }
+    });
+
+    function updateAccountBalance(balance) {
+        localStorage.setItem('accountBalance', balance);
+        localStorage.setItem(accNum1, balance);
+        $('#accountBalance').text(balance);
+    }
+
+    function savetran(type, amount) {
+        var transactions = [];
+
+        if (localStorage.getItem('transactions')) {
+            transactions = JSON.parse(localStorage.getItem('transactions'));
+        }
+
+        var transaction = {
+            accountNumber: accNum1,
+            date: new Date().toLocaleString(),
+            type: type,
+            amount: amount
+        };
+
+        transactions.push(transaction);
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+        appendtran(transaction.date, transaction.type, transaction.amount);
+    }
+
+    function appendtran(date, type, amount) {
+        var row = $('<tr></tr>');
+        row.append($('<td></td>').text(date));
+        row.append($('<td></td>').text(type));
+        row.append($('<td></td>').text(amount));
+        transactionTable.append(row);
+    }
+});
+    </script>
+</body>
+</html>

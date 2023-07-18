@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <style>
+        body {
+  background: linear-gradient(to bottom, #f2f2f2, #a4fda3); /* Gradient background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-image: url(bank.jpg);
+}
+
+form {
+  background: #fff;
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="button"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: #4caf50; /* Hover color */
+  color: #fff;
+}
+
+#head {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+}
+
+label,
+input {
+  width: 100%;
+}
+
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
+}
+
+a {
+  color: #0000ff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                event.preventDefault();
+                var userName = $('#userName').val();
+                var name = /^[A-Z]{1}[a-z]+$/;
+                if (!name.test(userName)) {
+                    alert('Please enter a valid user name.');
+                    return;
+                }
+                var accNum = $('#accNum').val();
+                var name = /^[0-9]{9,18}$/;
+                if (!name.test(accNum)) {
+                    alert('Please enter a valid account.');
+                    return;
+                }
+                var emailId = $('#emailId').val();
+                var email = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.((com)|(in)|(co\.in))$/;
+                if (!email.test(emailId)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                var Password=$('#passWord').val();
+                // var Pass = /^[A-Za-z0-9+]{8,15}$/;
+                // if (!Pass.test(Password)) {
+                //     alert('Password must contain 8 to 15 charachters with atleast one uppercase, lowercase and digits');
+                //     return;
+                // }
+                var existingData = localStorage.getItem('userData');
+                var userData = [];
+                
+                if (existingData) {
+                    userData = JSON.parse(existingData);
+                    for (var i = 0; i < userData.length; i++) {
+                        if (userData[i].accNum === accNum) {
+                            alert('Account number already exists. Please enter a unique account number.');
+                            return;
+                        }
+                }
+              }
+                
+                userData.push({
+                    userName: userName,
+                    accNum: accNum,
+                    emailId: emailId,
+                    Password:Password,
+                    
+
+                });
+                localStorage.setItem('userData', JSON.stringify(userData));
+                for (var i = 0; i < localStorage.length; i++){
+                    if(!(accNum in localStorage.key)){
+                        localStorage.setItem("accountBalance",0);
+                    }
+                }
+                
+                $('form')[0].reset();
+            });
+            
+            $('#loginButton').click(function() {
+                window.location.href = 'login.html';
+            });  
+            
+        });
+    </script>
+</head>
+<body>
+    <!-- <marquee id="head">Save money</marquee> -->
+    <form>
+        <h1>Account Registration</h1>
+        <label for="userName">UserName:</label>
+        <input type="text" id="userName" placeholder="User Name" required/><br>
+        <label for="accNum">Acc No:</label>
+        <input type="text" id="accNum" placeholder="Account number" required/><br>
+        <label for="emailId">Email:</label>
+        <input type="email" id="emailId" placeholder="Email ID" required/><br>
+        <label for="passWord">Password:</label>
+        <input type="password" id="passWord" placeholder="Password" required/><br>
+        <input type="submit" value="Submit">
+        <input type="button" id="loginButton" value="Login">
+     
+    </form>
+    
+</body>
+</html>

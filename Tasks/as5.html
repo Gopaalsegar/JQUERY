@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#inp_txt").on("keyup",function(){
+                var value=$(this).val().toLowerCase();
+                $("#tab tr").filter(function(){
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="inp_txt">
+    <table>
+        <th>Name</th>
+        <th>Address</th>
+        <tbody id="tab">
+            <tr>
+                <td>Gopaal</td>
+                <td>Madurai</td>
+            </tr>
+            <tr>
+                <td>Hari</td>
+                <td>svg</td>
+            </tr>
+            <tr>
+                <td>Arvind</td>
+                <td>Karur</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

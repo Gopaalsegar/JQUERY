@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table</title>
+</head>
+<body>
+    <h2>Table</h2>
+    
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <div class="add-row">
+        <h3>Add New Row</h3>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="email" placeholder="Email">
+        <button id="add-btn">Add</button>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            
+            loadTableData();
+            
+            
+            $("#add-btn").click(function() {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                
+                if (name !== "" && email !== "") {
+                    addTableRow(name, email);
+                    saveTableData();
+                    $("#name").val("");
+                    $("#email").val("");
+                }
+            });
+            
+            $("#data-table").on("click", ".delete-btn", function() {
+                $(this).closest("tr").remove();
+                saveTableData();
+            });
+        });
+        
+        function addTableRow(name, email) {
+            var row = $("<tr>");
+            var nameCell = $("<td>").text(name);
+            var emailCell = $("<td>").text(email);
+            var deleteCell = $("<td>");
+            var deleteButton = $("<button>")
+                .text("Delete")
+                .addClass("delete-btn");
+            
+            deleteCell.append(deleteButton);
+            row.append(nameCell, emailCell, deleteCell);
+            $("#data-table tbody").append(row);
+        }
+        
+        function loadTableData() {
+            var data = localStorage.getItem("tableData");
+            
+            if (data) {
+                $("#data-table tbody").html(data);
+            }
+        }
+        
+        function saveTableData() {
+            var tableData = $("#data-table tbody").html();
+            localStorage.setItem("tableData", tableData);
+        }
+    </script>
+</body>
+</html>
