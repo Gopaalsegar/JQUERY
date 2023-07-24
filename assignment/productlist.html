@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outerdiv" data-bind="foreach: displayedProducts">
+        <div id="innerdiv">
+          <h3><a data-bind="text: name, attr: { href: 'product.html?name=' + encodeURIComponent(name) + '&description=' + encodeURIComponent(description) + '&price=' + encodeURIComponent(price)+ '&image=' + encodeURIComponent(image) }"></a></h3>
+          <p data-bind="text: price"></p>
+          <img data-bind="attr:{ src: image }" width="200" height="100">
+          <input class="quantity" type="number" min="1" data-bind="value: quantity, event: { change: $root.updateTotalPrice }, valueUpdate: 'input'">
+          <button class="addcart" data-bind="click: $parent.addToCart.bind($parent, $data)">Add to Cart</button>
+        </div>
+      </div>
+      <script>
+         function Product(name, description, price, type,image) {
+      this.name = name;
+      this.description = description;
+      this.price = price;
+      this.type = type;
+      this.image = image;
+      this.quantity = 1; 
+    }
+    var products = [
+      new Product("Iphone 14", "C", "$500.99", "mobile",'images/iphone-14.jpg' ),
+    ]
+    ko.applyBindings(new ProductViewModel());
+
+      </script>
+</body>
+</html>

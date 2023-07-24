@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List Page</title>
+    <style>
+              ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0;
+           
+            margin: 0 auto; 
+        }
+
+       
+        li {
+            width: 30%; 
+            margin-bottom: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            text-align: center;
+        }
+
+        
+        li img {
+            height: 150px; 
+            width: 150px; 
+            display: block;
+            margin: 0 auto;
+            
+        }
+
+        li strong {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+      
+        li span {
+            display: block;
+            margin-top: 5px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+         h1 {
+            margin: 0;
+            padding: 10px;
+            font-size: 24px;
+        }
+        #nav {
+            display: flex;
+            
+            background-color: #f58484;
+        }
+        #nav a {
+            color: #f58484;
+            float: right;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: #555;
+        }
+
+        #nav a:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <h1>Product List</h1>
+        <a href="cart.html">cart</a>
+    </div>
+    
+    <ul data-bind="foreach: pagedProducts">
+        <li>
+            
+                <img data-bind="attr: { src: imageUrl, alt: name }" />
+                <strong data-bind="text: name"></strong>
+                <span data-bind="text: price"></span>
+            
+        </li>
+    </ul>
+
+    <div class="pagination">
+        <button class="prev" data-bind="click: previousPage, enable: currentPageIndex() > 0">Previous</button>
+       
+        <span data-bind="foreach: paginationNumbers"> 
+        
+          <button class="page-number" data-bind="text: $data, click: $root.goToPage, css: { active: $root.isActivePage($data) }"></button>
+        </span>
+        <button class="next" data-bind="click: nextPage, enable: currentPageIndex() < maxPageIndex()">Next</button>
+      </div>
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+    <script>
+        function Product(name, price, imageUrl,description) {
+    this.name = name;
+    this.price = price;
+    this.imageUrl = imageUrl;
+    this.description = description;
+    }
+
+    function ProductListViewModel() {
+        var self = this;
+
+    // Observable array to hold the list of products
+        self.products = ko.observableArray([
+        new Product("Iphone 14",100000, "iphone-14.jpg","The iPhone 14 looks identical to the iPhone 13, but there's a new 6.7-inch model called the iPhone 14 Plus. Under-the-hood improvements include 6GB of RAM, a 5-core GPU, Bluetooth 5.3, and multiple camera updates. Color options have been updated with (PRODUCT)RED, blue, purple, midnight, and starlight."),
+        new Product("Samsung f04", 20000, "samsung.webp","SAMSUNG GALAXY F04 has enough RAM with 4 GB. Not too big, but still enough for some multitasking applications. Strength of SAMSUNG GALAXY F04 screen use big screen 6.5 inches LCD size, but it only can work with 720p resolution. Pros of SAMSUNG GALAXY F04 has big battery capacity at 5000 mAh."),
+        new Product("Redmi note 12 pro", 30000, "mi.jpg","This 5G smartphone features a 6.67 inches OLED display panel with an immersive 120Hz refresh rate, HDR10+ support, and 500-900 nits brightness rating. This smartphone has dust and water-resistant support"),
+        new Product("Iphone 14",100000, "iphone-14.jpg","The iPhone 14 looks identical to the iPhone 13, but there's a new 6.7-inch model called the iPhone 14 Plus. Under-the-hood improvements include 6GB of RAM, a 5-core GPU, Bluetooth 5.3, and multiple camera updates. Color options have been updated with (PRODUCT)RED, blue, purple, midnight, and starlight."),
+        new Product("Samsung f04", 20000, "samsung.webp","SAMSUNG GALAXY F04 has enough RAM with 4 GB. Not too big, but still enough for some multitasking applications. Strength of SAMSUNG GALAXY F04 screen use big screen 6.5 inches LCD size, but it only can work with 720p resolution. Pros of SAMSUNG GALAXY F04 has big battery capacity at 5000 mAh."),
+        new Product("Redmi note 12 pro", 30000, "mi.jpg","This 5G smartphone features a 6.67 inches OLED display panel with an immersive 120Hz refresh rate, HDR10+ support, and 500-900 nits brightness rating. This smartphone has dust and water-resistant support"),
+        new Product("Iphone 14",100000, "iphone-14.jpg","The iPhone 14 looks identical to the iPhone 13, but there's a new 6.7-inch model called the iPhone 14 Plus. Under-the-hood improvements include 6GB of RAM, a 5-core GPU, Bluetooth 5.3, and multiple camera updates. Color options have been updated with (PRODUCT)RED, blue, purple, midnight, and starlight."),
+        new Product("Samsung f04", 20000, "samsung.webp","SAMSUNG GALAXY F04 has enough RAM with 4 GB. Not too big, but still enough for some multitasking applications. Strength of SAMSUNG GALAXY F04 screen use big screen 6.5 inches LCD size, but it only can work with 720p resolution. Pros of SAMSUNG GALAXY F04 has big battery capacity at 5000 mAh."),
+        new Product("Redmi note 12 pro", 30000, "mi.jpg","This 5G smartphone features a 6.67 inches OLED display panel with an immersive 120Hz refresh rate, HDR10+ support, and 500-900 nits brightness rating. This smartphone has dust and water-resistant support"),
+        ]);
+
+        self.pageSize = 4;
+            self.currentPageIndex = ko.observable(0);
+
+            self.maxPageIndex = ko.computed(function () {
+                console.log(self.pageSize)
+            return Math.ceil(self.products().length / self.pageSize) - 1;
+            });
+
+
+            self.pagedProducts = ko.computed(function () {
+            var startIndex = self.pageSize * self.currentPageIndex();
+            return self.products().slice(startIndex, startIndex + self.pageSize);
+            });
+
+            self.paginationNumbers = ko.computed(function () {
+            var pages = [];
+            for (var i = 0; i <= self.maxPageIndex(); i++) {
+                pages.push(i + 1);
+            }
+            return pages;
+            });
+
+            self.previousPage = function () {
+            if (self.currentPageIndex() > 0) {
+                self.currentPageIndex(self.currentPageIndex() - 1);
+            
+            }};
+
+            self.nextPage = function () {
+            if (self.currentPageIndex() < self.maxPageIndex()) {
+                self.currentPageIndex(self.currentPageIndex() + 1);
+            }};
+
+            self.goToPage = function (pageIndex) {
+            self.currentPageIndex(pageIndex - 1);
+            };
+
+            self.isActivePage = function (pageIndex) {
+            return self.currentPageIndex() === (pageIndex - 1);
+            };
+    }
+
+
+// Apply the bindings
+ko.applyBindings(new ProductListViewModel());
+
+    </script>
+</body>
+</html>
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List Page</title>
+    <style>
+        /* Existing styles */
+        /* ... */
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0;
+           
+            margin: 0 auto; 
+        }
+
+       
+        li {
+            width: 30%; 
+            margin-bottom: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            text-align: center;
+        }
+
+        
+        li img {
+            height: 150px; 
+            width: 150px; 
+            display: block;
+            margin: 0 auto;
+            
+        }
+
+        li strong {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+      
+        li span {
+            display: block;
+            margin-top: 5px;
+            font-size: 16px;
+            color: #555;
+        }
+        /* New styles for navigation bar */
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f58484;
+            padding: 10px;
+        }
+
+        #nav h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        #nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: #555;
+        }
+
+        #nav a:hover {
+            background-color: #777;
+        }
+
+        /* New styles for pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: #333;
+            text-decoration: none;
+            padding: 8px 12px;
+            margin: 0 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .pagination a.active {
+            background-color: #f58484;
+            color: #fff;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <h1>Product List</h1>
+        <a href="cart.html">Cart</a>
+    </div>
+    
+    <ul data-bind="foreach: products">
+        <li>
+            <img data-bind="attr: { src: imageUrl, alt: name }" />
+            <strong data-bind="text: name"></strong>
+            <span data-bind="text: price"></span>
+        </li>
+    </ul>
+
+    <div class="pagination" data-bind="foreach: pages">
+        <a href="#" data-bind="text: $data, click: $parent.changePage, css: { active: $data === $parent.currentPage() }"></a>
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+    <script>
+        function view(name, price, imageUrl, description) {
+            this.name = name;
+            this.price = price;
+            this.imageUrl = imageUrl;
+            this.description = description;
+        }
+
+        function ProductListViewModel() {
+            var self = this;
+
+            // Observable array to hold the list of products
+            self.products = ko.observableArray([
+                // ... Product data ...
+                new Product("Iphone 14",100000, "iphone-14.jpg","The iPhone 14 looks identical to the iPhone 13, but there's a new 6.7-inch model called the iPhone 14 Plus. Under-the-hood improvements include 6GB of RAM, a 5-core GPU, Bluetooth 5.3, and multiple camera updates. Color options have been updated with (PRODUCT)RED, blue, purple, midnight, and starlight."),
+                new Product("Samsung f04", 20000, "samsung.webp","SAMSUNG GALAXY F04 has enough RAM with 4 GB. Not too big, but still enough for some multitasking applications. Strength of SAMSUNG GALAXY F04 screen use big screen 6.5 inches LCD size, but it only can work with 720p resolution. Pros of SAMSUNG GALAXY F04 has big battery capacity at 5000 mAh."),
+                new Product("Redmi note 12 pro", 30000, "mi.jpg","This 5G smartphone features a 6.67 inches OLED display panel with an immersive 120Hz refresh rate, HDR10+ support, and 500-900 nits brightness rating. This smartphone has dust and water-resistant support"),
+                new Product("Iphone 14",100000, "iphone-14.jpg","The iPhone 14 looks identical to the iPhone 13, but there's a new 6.7-inch model called the iPhone 14 Plus. Under-the-hood improvements include 6GB of RAM, a 5-core GPU, Bluetooth 5.3, and multiple camera updates. Color options have been updated with (PRODUCT)RED, blue, purple, midnight, and starlight."),
+                new Product("Samsung f04", 20000, "samsung.webp","SAMSUNG GALAXY F04 has enough RAM with 4 GB. Not too big, but still enough for some multitasking applications. Strength of SAMSUNG GALAXY F04 screen use big screen 6.5 inches LCD size, but it only can work with 720p resolution. Pros of SAMSUNG GALAXY F04 has big battery capacity at 5000 mAh."),
+                new Product("Redmi note 12 pro", 30000, "mi.jpg","This 5G smartphone features a 6.67 inches OLED display panel with an immersive 120Hz refresh rate, HDR10+ support, and 500-900 nits brightness rating. This smartphone has dust and water-resistant support"),
+        ]);
+            
+
+         } 
+          
+    </script>
+</body>
+</html> -->
