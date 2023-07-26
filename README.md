@@ -1,8 +1,8 @@
 # Requirement
--Create a joint account and Individual account in a Bank using localStorage.
--When credit and debit happens in one account it has to be reflected in the other joint account as well.
--Credit and debit also carries in individual account.
--Transaction history according to account number should be carried.
+- Create a joint account and Individual account in a Bank using localStorage.
+- When credit and debit happens in one account it has to be reflected in the other joint account as well.
+- Credit and debit also carries in individual account.
+- Transaction history according to account number should be carried.
 # Solution
 - Seperate user login page for Joint account and Individual account by select from main.html
 - registrstion.html is used for Joint account registration.
