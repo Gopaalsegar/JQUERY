@@ -25,7 +25,7 @@
 - Login will be carried by using email address and password.
 
 # Transaction
--credit will add amount, debit will subtract amount in account balance and store in local stroage with account number, date and type of transaction.
--account number and balance will store seperately.
+- credit will add amount, debit will subtract amount in account balance and store in local stroage with account number, date and type of transaction.
+- Account number and balance will store seperately.
 
 
