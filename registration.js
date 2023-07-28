@@ -1,6 +1,6 @@
 require.config({
     paths: {
-      'knockout': 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest',
+        'knockout': 'knockout',
     },
   });
   require(['knockout'], function (ko) {
@@ -18,6 +18,8 @@ require.config({
             var name = /^[A-Z]{1}[a-z]+$/;
             var email = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.((com)|(in)|(co\.in))$/;
             var Pass = /^[A-Za-z0-9+]{8,15}$/;
+            var acc = /^[0-9]{9,18}$/;
+
            
 
             if (!name.test(self.userName())) {
@@ -25,20 +27,20 @@ require.config({
                 return false;
             }
 
-            // if (!name.test(self.lastName())) {
-            //     alert('Please enter a valid Last name.');
-            //     return false;
-            // }
+            if (!acc.test(self.accNum())) {
+                alert('Please enter a valid account.');
+                return false;
+            }
 
             if (!email.test(self.emailId())) {
                 alert('Please enter a valid email address.');
                 return false;
             }
 
-            // if (!Pass.test(self.passWord())) {
-            //     alert('Password must contain 8 to 15 characters with at least one uppercase, lowercase, and digits');
-            //     return false;
-            // }
+            if (!Pass.test(self.passWord())) {
+                alert('Password must contain 8 to 15 characters with at least one uppercase, lowercase, and digits');
+                return false;
+            }
 
           
 
@@ -64,11 +66,13 @@ require.config({
                    
                 });
                 localStorage.setItem('userData', JSON.stringify(userData));
-                for (var i = 0; i < localStorage.length; i++){
-                    if(!(accNum in localStorage.key)){
-                        localStorage.setItem("accountBalance",0);
+                
+                // To make account balance 0 While account number is new.
+                Object.keys(localStorage).forEach(function (key) {
+                    if (!(accNum in localStorage.key)) {
+                        localStorage.setItem("accountBalance", 0);
                     }
-                }
+                });
 
                 localStorage.setItem('userData', JSON.stringify(userData));
 

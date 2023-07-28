@@ -1,35 +1,38 @@
 require.config({
     paths: {
-      'knockout': 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest',
+        'knockout': 'knockout',
     },
   });
   require(['knockout'], function (ko) {
     function AppViewModel(){
         var userData = localStorage.getItem('userData');
         userData = JSON.parse(userData);
-        var matched = false;
-        this.emailId= ko.observable();
-        this.passWord= ko.observable();
-        this.submitButton = function(){
-            for (var i = 0; i < userData.length; i++) {
-                var user = userData[i];
-                if (user.emailId === this.emailId() && user.Password === this.passWord()) {
-                    matched = true;
-                    localStorage.setItem('newData', JSON.stringify(user))
-                    localStorage.setItem('accNum', JSON.stringify(user.accNum))
-                    localStorage.setItem('name', JSON.stringify(user.userName))
-                    break;
-                }
-            }
-            if (matched) {
-                window.location.href = 'home.html';
+        this.emailId = ko.observable();
+        this.passWord = ko.observable();
+
+        // To check the user data, whether it is available in local storage.
+        this.submitButton = function () {
+            var user = userData.find(function (user) {
+                return user.emailId === this.emailId() && user.Password === this.passWord();
+            }, this);
+        
+            if (user) {
+                localStorage.setItem('newData', JSON.stringify(user));
+                localStorage.setItem('accNum', JSON.stringify(user.accNum));
+                localStorage.setItem('name', JSON.stringify(user.userName));
+                redirectToHome();
             } else {
-                $('.error-message').text('Invalid email or password.');
+                alert('Please enter a valid email address or password');
             }
         }
+        // Once verified it redirects to home page
+        function redirectToHome() {
+            window.location.href = 'home.html';
+        }
+        
     }
     self.newUserlog = function() {
-            window.location.href = 'registrstion.html';
+            window.location.href = 'index.html';
         };
     ko.applyBindings(new AppViewModel());
   });
