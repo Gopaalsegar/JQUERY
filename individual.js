@@ -1,8 +1,4 @@
-require.config({
-    paths: {
-        'knockout': 'knockout',
-    },
-});
+
 require(['knockout'], function (ko) {
     function AppViewModel() {
         var self = this;

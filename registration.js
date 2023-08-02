@@ -1,8 +1,4 @@
-require.config({
-    paths: {
-        'knockout': 'knockout',
-    },
-  });
+
   require(['knockout'], function (ko) {
     function AppViewModel() {
         var self = this;
@@ -37,10 +33,10 @@ require.config({
                 return false;
             }
 
-            if (!Pass.test(self.passWord())) {
-                alert('Password must contain 8 to 15 characters with at least one uppercase, lowercase, and digits');
-                return false;
-            }
+            // if (!Pass.test(self.passWord())) {
+            //     alert('Password must contain 8 to 15 characters with at least one uppercase, lowercase, and digits');
+            //     return false;
+            // }
 
           
 
