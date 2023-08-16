@@ -19,3 +19,12 @@
 -Test will start with timer and ends if teh timer ends and result will be stored.
 #ETA
 -32 hours
+
+
+#Steps
+step 1: use "Admin" as a username in login and password "Admin@123" -> admin page.
+step 2: select Add subject and question-> create subject ->give subject name and insert come back.
+step 3: Add question  and option and give option number and select subject.
+step 4: In login create new user-> create new account . Come back to login -> give credentials.
+Step 5: select subject-> timer will start and it can be submitted.
+step 6:login using admin credential. dashboard all records will be stored.
