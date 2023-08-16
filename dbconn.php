@@ -99,5 +99,5 @@ $conn->query($createTableResultSQL);
 echo "Tables created successfully.";
 
 // Close the connection when done
-$databaseConnection->closeConnection();
+// $databaseConnection->closeConnection();
 ?>
