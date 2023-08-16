@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label>Option 4:</label>
             <input type="text" name="option4" required>
 
-            <label>Correct Option:</label>
+            <label>Correct Option Number:</label>
             <input type="text" name="correct_option" required>
             <label>Subject:</label>
             <select name="subject">
