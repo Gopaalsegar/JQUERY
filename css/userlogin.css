@@ -1,0 +1,72 @@
+/* Reset default margin and padding */
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+body, h1, h2, h3, p, div {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the login form */
+.log {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* Style the form container */
+.log form {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+/* Style form elements */
+.log label, .log input[type="text"], .log input[type="password"], .log input[type="submit"] {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.log input[type="text"], .log input[type="password"], .log input[type="submit"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.log input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.log input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style error message */
+.log p.error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Style the "New user" link */
+.log a {
+    display: block;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    margin-top: 10px;
+}
