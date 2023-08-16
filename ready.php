@@ -45,10 +45,7 @@ class UserResults
                 echo '<a href="test.php?subject=' . $subjectName . '">' . $subjectName . '</a><br>';
 
             }
-            // else {
-            //     echo '<p>You have already taken the test for ' . $subjectName . '. Choose another subject.</p>';
-
-            // }
+          
         }
     }
 

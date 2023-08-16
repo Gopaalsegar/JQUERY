@@ -3,11 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 include 'dbconn.php';
-// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    
 
-//     // Rest of your existing code to process answers and calculate scores
-// }
 
 class QuizTimer {
     private $conn;
@@ -45,14 +41,8 @@ $quizTimer = new QuizTimer($conn);
 <head>
     <title>Quiz Timer</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/quiz1.css">
-    <!-- <script>
-        window.onload = function() {
-            window.history.forward();
-
-           
-        }
-    </script> -->
+    <link rel="stylesheet" href="css/quiz.css">
+  
 </head>
 <body>
 

@@ -24,7 +24,6 @@ while ($row = $questionResult->fetch_assoc()) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer'])) {
-    // $_SESSION['quiz_submitted'] = true;
     $userAnswers = $_POST['answer'];
     $selectedSubject = $_POST['selected_subject'];
     echo "<h2>User's Selected Answers:</h2>";
@@ -47,12 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['answer'])) {
         echo "Selected Option: $selectedOption<br>";
         echo "Correct Option: $correctOption<br>";
         echo "<br>";
-    } // No need for the foreach loop to populate $userAnswers
+    } 
 
-// echo "<h2>User's Selected Answers:</h2>";
-// foreach ($userAnswers as $questionId => $selectedOption) {
-//     echo "Question ID: $questionId, Selected Option: $selectedOption<br>";
-// }
 
 function calculateScore($userAnswers,$selectedSubject) {
     global $conn;
@@ -88,7 +83,6 @@ $username = $_SESSION["username"];
 
 if (isset($_COOKIE['time_taken'])) {
     $timeTaken = $_COOKIE['time_taken'];
-    // Now you can use $timeTaken as needed
     echo "Time taken:  $timeTaken Seconds <br>";
 }
 
@@ -111,8 +105,6 @@ else{
 }
 
 
-// Redirect to a thank you page or display the results
-// header("Location: thank_you.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,13 +113,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Result</title>
     <link rel="stylesheet" href="css/result.css">
-    <!-- <script>
-        window.onload = function() {
-            window.history.forward();
 
-            
-        }
-    </script> -->
 </head>
 <body>
     
