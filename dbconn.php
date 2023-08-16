@@ -82,7 +82,7 @@ $createTableQuestionSQL = "
 $createTableSubjectSQL = "
     CREATE TABLE IF NOT EXISTS subject (
         sub_id INT AUTO_INCREMENT PRIMARY KEY,
-        subject VARCHAR(20)
+        subject_name VARCHAR(20)
     )
 ";
 
