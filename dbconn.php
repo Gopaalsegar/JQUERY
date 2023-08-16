@@ -21,6 +21,11 @@ class DatabaseConnection {
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
+
+        // Select the specific database
+        if (!$this->conn->select_db($this->dbname)) {
+            die("Database selection failed: " . $this->conn->error);
+        }
     }
 
     public function getConnection() {
@@ -90,7 +95,6 @@ $createTableResultSQL = "
     )
 ";
 
-// Execute the create table queries
 $conn->query($createTableUserDetailsSQL);
 $conn->query($createTableQuestionSQL);
 $conn->query($createTableSubjectSQL);
