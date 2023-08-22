@@ -1,0 +1,66 @@
+<!-- add_question_form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Question</title>
+    <link rel="stylesheet" href="css/add_question.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'getSubject.php', // Replace with the actual PHP script to fetch subjects
+                method: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    var selectElement = $('select[name="subject"]');
+                    selectElement.empty().append('<option value="Select">Select</option>');
+    
+                    $.each(response.subjects, function(index, subject) {
+                        selectElement.append('<option value="' + subject.subject_name + '">' + subject.subject_name + '</option>');
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Test App</h1>
+    </header>
+    <div class="container">
+        <form method="post" action="AddQuestion.php">
+            <label>Question:</label>
+            <input type="text" name="question_text" required>
+
+            <label>Option 1:</label>
+            <input type="text" name="option1" required>
+
+            <label>Option 2:</label>
+            <input type="text" name="option2" required>
+
+            <label>Option 3:</label>
+            <input type="text" name="option3" required>
+
+            <label>Option 4:</label>
+            <input type="text" name="option4" required>
+
+            <label>Correct Option Number:</label>
+            <input type="text" name="correct_option" required>
+
+            <label>Subject:</label>
+            <select name="subject">
+                <option value="Select">Select</option>
+            </select>
+
+            <input type="submit" value="Add Question">
+        </form>
+        <a class="back-link" href="AdminTest.php">Back</a>
+    </div>
+</body>
+
+</html>

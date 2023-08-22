@@ -1,0 +1,77 @@
+/* Reset default margin and padding */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#timer {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the question container */
+.question {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the question text */
+.question p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style the answer options */
+.question input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Style the submit button */
+#submit,button {
+    display: block;
+    margin: 20px auto;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#submit:hover,button {
+    background-color: #555;
+}
+a {
+    text-decoration: none;
+    color: #cad1c4;
+    background-color: #000000;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+ a:hover {
+    background-color: #333;
+    color: #fff;
+}
+/* button{
+    text-align: center;
+
+    text-decoration: none;
+    color: #cad1c4;
+    background-color: #000000;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+} */

@@ -1,0 +1,42 @@
+body, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the navigation links */
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    color: #000000;
+    /* background-color: #3662b4; */
+    text-align: center;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* a:hover {
+    background-color: #333;
+    color: #fff;
+} */
+
+/* Center the content */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
