@@ -1,21 +1,15 @@
 <?php
-// Set error reporting at the top
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
 include 'dbconn.php';
 
-class UserResults
+class Ready
 {
-    private $conn;
-    private $username;
+    
 
-    public function __construct($conn, $username)
-    {
-        $this->conn = $conn;
-        $this->username = $username;
-    }
+    public function __construct(private $conn,private $username ) {}
 
     public function getSubjectsForTest()
     {
@@ -24,13 +18,11 @@ class UserResults
         $stmt->execute();
         $result = $stmt->get_result();
         
-        $subjectsForTest = array();
+        $subjectsForTest = [];
         
-        // Fetch subjects
         while ($row = $result->fetch_assoc()) {
             $subjectName = $row['subject_name'];
             
-            // Check if the subject hasn't been taken by the user
             if (!in_array($subjectName, $this->userTakenSubjects())) {
                 $subjectsForTest[] = $subjectName;
             }
@@ -41,7 +33,7 @@ class UserResults
 
     public function userTakenSubjects()
     {
-        $takenSubjects = array();
+        $takenSubjects = [];
         $takenSubjectsSql = "SELECT DISTINCT subject FROM result WHERE username = ?";
         $takenSubjectsStmt = $this->conn->prepare($takenSubjectsSql);
         $takenSubjectsStmt->bind_param("s", $this->username);
@@ -62,7 +54,7 @@ class UserResults
         $stmt->bind_param("s", $this->username);
         $stmt->execute();
         $result = $stmt->get_result();
-        $userResultsData = array();
+        $userResultsData = [];
 
         while ($row = $result->fetch_assoc()) {
             $userResultsData[] = $row;
@@ -72,15 +64,12 @@ class UserResults
     }
 }
 
-// Get the username from the session
 if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
 
-    // Create an instance of UserResults and get user results
-    $userResults = new UserResults($conn, $username);
+    $userResults = new Ready($conn, $username);
     $subjectsForTest = $userResults->getSubjectsForTest();
     $userResultsData = $userResults->getUserResults();
 
-    include 'UserReady.php';
 } 
 ?>

@@ -1,17 +1,12 @@
 <?php
 class UserAuthController
 {
-    private $conn;
-
-    public function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
+    public function __construct(private $conn) {}
 
     public function loginUser()
     {
         if (isset($_SESSION["user_id"]) && !empty($_SESSION["user_id"])) {
-            header("Location: test.php");
+            header("Location: UserTest.php");
             exit();
         }
 
@@ -34,7 +29,7 @@ class UserAuthController
                 if (password_verify($password, $row["password"])) {
                     $_SESSION["user_id"] = $row["id"];
                     $_SESSION["username"] = $row["username"];
-                    header("Location: Ready.php");
+                    header("Location: UserReady.php");
                     exit();
                 }
 

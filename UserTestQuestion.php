@@ -3,17 +3,10 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 include 'dbconn.php';
-include 'UserTest.php';
 
-
-class QuizTimer
+class UserTestQuestion
 {
-    private $conn;
-
-    public function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
+    public function __construct(private $conn) {}
 
     public function getQuestions($subject)
     {
@@ -24,7 +17,10 @@ class QuizTimer
         return $stmt->get_result();
     }
 }
-$quizTimer = new QuizTimer($conn);
+
+$quizTimer = new UserTestQuestion($conn);
 $selectedSubject = $_GET['subject'];
 $questionsResult = $quizTimer->getQuestions($selectedSubject);
+
+
 ?>

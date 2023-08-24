@@ -1,3 +1,6 @@
+<?php
+    include 'Ready.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Results</title>
     <link rel="stylesheet" href="css/user_ready.css">
+
     <script type="text/javascript">
         window.history.forward();
         function noBack() {
@@ -19,8 +23,8 @@
         <h1>Test App</h1>
     </header>
 
-    <a class="back-link" href="UserLogin.php">Back</a>
-    <a class="logout-link" href="index.php">Log out</a>
+    <a class="back-link" href="index.php">Log out</a>
+
 
     <div class="container">
         <h3>Welcome

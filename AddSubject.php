@@ -1,5 +1,4 @@
 <?php
-// add_subject.php
 
 include 'dbconn.php';
 

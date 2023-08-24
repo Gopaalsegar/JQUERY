@@ -12,7 +12,7 @@
         <h1>Test App</h1>
     </header>
     <div class="nav-container">
-  <a class="nav-link" href="AdminDashboard.php">Dashboard</a>
+  <a class="nav-link" href="resultsDashboard.php">Dashboard</a>
   <a class="nav-link" href="AdminTest.php">Add subjects and questions</a>
   <a class="nav-link" href="index.php">Log out</a>
 </div>

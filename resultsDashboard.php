@@ -1,3 +1,7 @@
+<?php
+include 'QuizResultsDashboard.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

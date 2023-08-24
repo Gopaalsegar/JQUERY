@@ -6,12 +6,7 @@ include 'dbconn.php';
 
 class QuizResultsDashboard
 {
-    private $conn;
-
-    public function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
+    public function __construct(private $conn) {}
 
     public function getResults()
     {
@@ -24,6 +19,5 @@ class QuizResultsDashboard
 $resultsDashboard = new QuizResultsDashboard($conn);
 $results = $resultsDashboard->getResults();
 
-include 'resultsDashboard.php';
 ?>
 

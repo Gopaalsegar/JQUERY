@@ -1,4 +1,4 @@
-<!-- add_question_form.html -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,23 +9,8 @@
     <title>Add New Question</title>
     <link rel="stylesheet" href="css/add_question.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: 'getSubject.php', // Replace with the actual PHP script to fetch subjects
-                method: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    var selectElement = $('select[name="subject"]');
-                    selectElement.empty().append('<option value="Select">Select</option>');
-    
-                    $.each(response.subjects, function(index, subject) {
-                        selectElement.append('<option value="' + subject.subject_name + '">' + subject.subject_name + '</option>');
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="AddQuestion.js"></script>
+
 </head>
 
 <body>
@@ -33,7 +18,7 @@
         <h1>Test App</h1>
     </header>
     <div class="container">
-        <form method="post" action="AddQuestion.php">
+        <form method="post" action="QuestionManager.php">
             <label>Question:</label>
             <input type="text" name="question_text" required>
 
