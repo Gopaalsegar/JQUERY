@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+     <add id="Config_Task::menu" title="Config" module="Config_Task" sortOrder="10" resource="Config_Task::menu"/>
+     <add id="Config_Task::view" title="View" module="Config_Task" sortOrder="10" parent="Config_Task::menu" action="config/index/index" resource="Config_Task::view"/>
+    </menu>
+</config>

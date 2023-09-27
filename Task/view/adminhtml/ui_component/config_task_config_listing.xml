@@ -1,0 +1,36 @@
+<!-- app/code/Config/Task/view/adminhtml/ui_component/config_task_config_listing.xml -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">config_task_config_listing.config_task_config_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>config_task_columns</spinner>
+        <deps>
+            <dep>config_task_config_listing.config_task_config_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="config_task_config_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Config\Task\Ui\DataProvider\ConfigDataProvider</argument>
+            <argument name="name" xsi:type="string">config_task_config_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">config_id</argument>
+            <argument name="requestFieldName" xsi:type="string">config_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="string">config</item>
+                <item name="config_id_field" xsi:type="string">config_id</item>
+            </argument>
+        </argument>
+    </dataSource>
+    <columns name="config_task_columns">
+        <column name="config_id" component="Magento_Ui/js/grid/columns/text" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Config ID</label>
+            </settings>
+        </column>
+        
+    </columns>
+</listing>
