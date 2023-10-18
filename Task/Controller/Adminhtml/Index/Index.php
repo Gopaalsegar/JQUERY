@@ -4,9 +4,6 @@ namespace Config\Task\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Magento\Framework\View\Result\PageFactory;
 
-/**
- *
- */
 class Index extends Action
 {
 
