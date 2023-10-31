@@ -3,9 +3,6 @@ namespace Config\Task\Block\Adminhtml;
 
 use Magento\Framework\View\Element\Template;
 
-/**
- *
- */
 class Index extends Template
 {
     /**
@@ -13,9 +10,31 @@ class Index extends Template
      */
     public function getConfigDump()
     {
-        // Read the configuration dump from config.php
-        $configDump = include BP . '/app/etc/config.php';
-        return $configDump;
+        $configFilePath = BP . '/app/etc/config.php';
+
+        // Check if the config.php file exists
+        if (file_exists($configFilePath)) {
+            $configContents = file_get_contents($configFilePath);
+            return $this->parseConfigFile($configContents);
+        }
+
+        return [];
+    }
+
+    /**
+     * @param string $configContents
+     * @return array
+     */
+    private function parseConfigFile($configContents)
+    {
+        $configArray = [];
+
+        // Use regular expressions to extract the configuration data
+        if (preg_match('/return\s+(.*?);/s', $configContents, $matches)) {
+            $configArray = eval('return ' . $matches[1] . ';');
+        }
+
+        return is_array($configArray) ? $configArray : [];
     }
 
     /**
@@ -41,18 +60,11 @@ class Index extends Template
             if (is_array($value)) {
                 $result = array_merge($result, $this->flattenConfigArray($value, $newKey, $separator));
             } elseif (in_array($value, ['0', '1'])) {
-                // Extract the initial key (the first part before $separator)
                 $initialKey = explode($separator, $newKey)[0];
 
-                // Skip rows with 'module' in the parent key
-                if (($initialKey !== 'modules')&&($initialKey !== 'scopes')&&($initialKey !== 'themes')) {
-                    // Split the $newKey into parts using the separator
+                if (($initialKey !== 'modules') && ($initialKey !== 'scopes') && ($initialKey !== 'themes')) {
                     $keyParts = explode($separator, $newKey);
-
-                    // Remove the first two parts (system and default)
                     $keyParts = array_slice($keyParts, 2);
-
-                    // Rejoin the remaining parts to form the modified key
                     $newKey = implode($separator, $keyParts);
 
                     $result[] = [
@@ -65,5 +77,4 @@ class Index extends Template
         }
         return $result;
     }
-
 }

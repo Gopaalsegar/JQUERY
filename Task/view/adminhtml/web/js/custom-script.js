@@ -1,19 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const searchInput = document.getElementById("search-key");
-    const tableRows = document.querySelectorAll("#custom-config-table tbody tr");
+require(['jquery'], function($) {
+    $(document).ready(function() {
+        const searchInput = $("#search-key");
+        const tableRows = $("#custom-config-table tbody tr");
 
-    searchInput.addEventListener("input", function() {
-        const searchText = searchInput.value.toLowerCase();
+        searchInput.on("input", function() {
+            const searchText = searchInput.val().toLowerCase();
 
-        tableRows.forEach(function(row) {
-            const parentKey = row.querySelector("td:first-child").textContent.toLowerCase();
-            const key = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+            tableRows.each(function() {
+                const parentKey = $(this).find("td:first-child").text().toLowerCase();
+                const key = $(this).find("td:nth-child(2)").text().toLowerCase();
 
-            if (parentKey.includes(searchText) || key.includes(searchText)) {
-                row.style.display = "table-row";
-            } else {
-                row.style.display = "none";
-            }
+                if (parentKey.includes(searchText) || key.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
         });
     });
 });
