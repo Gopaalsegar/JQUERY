@@ -1,0 +1,81 @@
+
+.header {
+  position: fixed;
+  width: 100%;
+  margin-top: 25px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+  background-color: transparent; /* Set initial background color to transparent */
+}
+
+.header.scrolled {
+  background-color: white;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo {
+  display: flex;
+  
+  align-items: center;
+}
+
+.menu,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  filter: invert(100%);
+  width: 30px;
+  height: auto;
+  padding: 10px;
+}
+
+.menu a,
+.right a {
+  color: #ffffff;
+
+  text-decoration: none;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.menu a:hover,
+.right a:hover {
+  color: #666;
+}
+.header.scrolled .right a,
+
+.header.scrolled .menu a{
+  filter: invert(100%);
+
+}
+.header.scrolled .ovalButton ,
+
+.header.scrolled .logo img {
+  filter: invert(0%);
+}
+
+/* Style the oval button */
+.ovalButton {
+  padding: 0.5rem 1rem;
+  filter: invert(100%);
+  /* color: white; */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ovalButton:hover {
+  filter: invert(0%);
+}

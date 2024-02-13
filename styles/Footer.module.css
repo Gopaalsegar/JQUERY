@@ -1,0 +1,80 @@
+.footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+  }
+  
+  .footerContent {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .left {
+    color: black;
+  
+    flex: 1;
+  }
+  
+  .middle {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .bottom {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .socialLinks a {
+    color: black;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .newsletter form {
+    margin-top: 10px;
+  }
+  
+  .newsletter input {
+    width: 200px;
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  .newsletter button {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .footerLinks img {
+    width: 100px;
+    margin-right: 10px;
+  }
+  
+  .legal p {
+    margin: 0;
+    display: inline;
+  }
+  
+  .backToTop a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .backToTop a:hover {
+    text-decoration: underline;
+  }
+  

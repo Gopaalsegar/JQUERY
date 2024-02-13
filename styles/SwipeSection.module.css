@@ -1,0 +1,32 @@
+/* styles/SwipeSection.module.css */
+.swipeSection {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden; /* Hides the items that are not currently visible */
+  }
+  
+  .swipeItem {
+    display: flex;
+    flex: 1 0 100%; /* Each item takes equal width */
+    transition: margin-left 0.5s ease; /* Smooth transition for swipe animation */
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .roundImageContainer {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  .roundImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+  }
+  

@@ -1,0 +1,44 @@
+/* styles/Menu.module.css */
+.header {
+  width: 100%;
+  background-color: yellow;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.menu {
+  background-color: yellow; /* Set the background color of the menu */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.menu ul {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Use flexbox */
+  justify-content: flex-end; /* Align items to the right */
+}
+
+.menu li {
+  margin-left: 20px; /* Add space between the links */
+}
+
+.menu li:last-child {
+  margin-right: 20px; /* Add space on the right side of the last link */
+}
+
+.link1 {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.link1:hover {
+  color: rgb(0, 0, 0);
+}

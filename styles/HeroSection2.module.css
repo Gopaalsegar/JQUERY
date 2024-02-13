@@ -1,0 +1,47 @@
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Overlay with transparent grey */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for transparency */
+  }
+  .textContent h2{
+    font-size: 32px;
+  }
+  .textContent h1{
+    font-size: 32px;
+  }
+  .content {
+    color: white;
+    position: absolute;
+    top: 50%; /* Start in the middle vertically */
+    left: 50%; /* Start in the middle horizontally */
+    transform: translate(-50%, -50%); /* Translate both horizontally and vertically */
+    width: 100%;
+    text-align: left;
+    margin-left: 200px;
+    transition: all 0.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0s;
+  }
+  
+  
+  
+  
+  .left {
+    transition: all 0.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0s;
+  }
+  
+  .zoomIn {
+    transform: translate(-30%, -30%) scale(1.1); /* Zoom in from top */
+  }
+  

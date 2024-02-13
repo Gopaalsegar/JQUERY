@@ -1,0 +1,19 @@
+.carousel-container {
+    overflow: hidden;
+    width: 300px;
+    margin: 20px auto;
+    position: relative;
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .carousel-item {
+    min-width: 300px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+  }

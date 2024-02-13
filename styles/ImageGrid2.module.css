@@ -1,0 +1,32 @@
+/* styles/ImageGrid2.module.css */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid with minimum item width of 300px */
+    gap: 20px; /* Adjust the gap between grid items */
+  }
+  
+  .gridItem {
+    /* background-color: #f0f0f0; Background color of grid items */
+    padding: 20px; /* Padding around grid items */
+    border-radius: 8px; /* Rounded corners for grid items */
+  }
+  
+  .gridImage {
+    width: 100%; /* Ensure images fill their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners for images */
+  }
+  
+  .gridItem h3 {
+    margin-top: 10px; /* Add margin between image and heading */
+    font-size: 1.5rem; /* Adjust heading font size */
+  }
+  
+  .gridItem p {
+    
+    margin-top: 10px; /* Add margin between heading and description */
+    font-size: 13px; /* Adjust description font size */
+    line-height: 1.5; /* Adjust line spacing for paragraphs */
+
+  }
+  
